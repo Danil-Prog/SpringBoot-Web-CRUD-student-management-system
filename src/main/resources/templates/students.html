@@ -8,15 +8,35 @@
           crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" href="#">Student Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/students}">Student Management</a>
+            </li>
+        </ul>
+    </div>
+</nav>
     <div class = "container">
         <div class = "row">
-            <h1 class="display-4"> List Students </h1>
+                <h1 class="display-4"> List Students </h1>
+        </div>
 
-            <div class="row">
-                <div class = "col-lg-3">
-                    <a th:href = "@{/students/new}" class = "btn btn-primary rtn-sm mb-3"> Add new Student </a>
+                <div class="row">
+                    <div class = "col-lg-3">
+                        <a th:href = "@{/students/new}" class = "btn btn-primary rtn-sm mb-3"> Add new Student </a>
+                    </div>
                 </div>
-            </div>
+
         <table class = "table table-striped table-bordered">
             <thead class = "table-primary">
                 <tr>
@@ -32,10 +52,13 @@
                     <td th:text = "${student.firstName}"></td>
                     <td th:text = "${student.lastName}"></td>
                     <td th:text = "${student.email}"></td>
+                    <td>
+                        <a th:href="@{/students/edit/{id}(id=${student.id})}"
+                        class="btn btn-primary">Update</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
-        </div>
     </div>
 </body>
 </html>
