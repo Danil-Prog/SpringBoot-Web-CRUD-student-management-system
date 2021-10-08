@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
+
 @Controller
 public class StudentController {
     private StudentService studentService;
@@ -21,7 +23,9 @@ public class StudentController {
 
     @GetMapping("/students")
     public String listStudents(Model model){
-        model.addAttribute("students", studentService.getAllStudents());
+        String keyword = "Bush";
+        List<Student> listStudent = studentService.listAll(keyword);
+        model.addAttribute("students", listStudent);
         return "students";
     }
 

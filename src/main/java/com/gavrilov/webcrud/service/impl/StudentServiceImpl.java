@@ -25,6 +25,13 @@ public class StudentServiceImpl implements StudentService {
         return studentRepository.save(student);
     }
 
+    public List<Student> listAll(String keyword) {
+        if (keyword != null){
+                return studentRepository.findAll(keyword);
+        }
+        return studentRepository.findAll();
+    }
+
     @Override
     public Student getStudentById(Long id) {
         return studentRepository.findById(id).get();
