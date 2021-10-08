@@ -39,12 +39,12 @@
         <div>&nbsp;</div>
             <div>
                 <form th:action="@{/students}">
-                    Filter:
-                    <input type="text" name = "keyword" th:value="${keyword}" required/>
-                    &nbsp;
-                    <input type="submit" value = "Search"/>
-                    &nbsp;
-                    <input type="button" value = "Clear" onclick="clearFilter()"/>
+                    <div class="input-group">
+                        <input type="search" name = "keyword" th:value="${keyword}" required class="form-control rounded" placeholder="Search" aria-label="Search"
+                               aria-describedby="search-addon" />
+                        <button type="submit" class="btn btn-outline-primary">search</button>
+                        <input type="button" class="btn btn-outline-primary" value = "Clear" onclick="clearFilter()"/>
+                    </div>
                 </form>
             </div>
         <div>&nbsp;</div>
