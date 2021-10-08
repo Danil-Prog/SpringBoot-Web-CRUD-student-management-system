@@ -2,6 +2,7 @@ package com.gavrilov.webcrud.controller;
 
 import com.gavrilov.webcrud.entity.Student;
 import com.gavrilov.webcrud.service.StudentService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,10 +23,11 @@ public class StudentController {
     // handler method to handle list students and return mode and view
 
     @GetMapping("/students")
-    public String listStudents(Model model){
-        String keyword = "Bush";
+    public String listStudents(Model model,
+                               @Param("keyword") String keyword){
         List<Student> listStudent = studentService.listAll(keyword);
         model.addAttribute("students", listStudent);
+        model.addAttribute("keyword", keyword);
         return "students";
     }
 
